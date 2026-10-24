@@ -1,3 +1,7 @@
+<!--
+  SPDX-FileCopyrightText: None
+  SPDX-License-Identifier: CC0-1.0
+-->
 # Changelog
 
 This project does NOT follow semantic versioning. The version increases as
@@ -11,6 +15,101 @@ follows:
 3. Patch version updates are made for Buildroot minor releases, Erlang/OTP
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
+
+## v1.33.1
+
+This is a security and bug fix release.
+
+* Changes
+  * Fix camera support by enabling the unicam-legacy Linux device driver
+
+* Package updates
+  * [nerves_system_br 1.33.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.33.2)
+    * [Erlang/OTP 28.3.1](https://erlang.org/download/OTP-28.3.1.README.md)
+    * [Buildroot 2025.11.1](https://lore.kernel.org/buildroot/f6496994-b279-46f4-b554-7dbe2df92782@rnout.be/T/)
+
+## v1.33.0
+
+This is a major Buildroot and Linux update. It should be seamless for most
+1.32.0 users.
+
+* Changes
+  * Refresh `ramoops-overlay.dts`. This actually changes the default pstore
+    settings to reserve less DRAM based on experience of not needing nearly as
+    much. Settings can be overridden now via the `config.txt`.
+  * Use EEx to generate the `fwup.conf`. This removes a lot of repetition. If
+    you've made a custom `fwup.conf`, please review git commit log for details.
+
+* Updated dependencies
+  * Linux 6.12.47
+  * [nerves_system_br 1.33.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.33.0)
+    * [Buildroot 2025.11](https://lore.kernel.org/buildroot/87bjk439tj.fsf@dell.be.48ers.dk/T/)
+    * [Erlang/OTP 28.3](https://erlang.org/download/OTP-28.3.README.md)
+    * [fwup 1.15.0](https://github.com/fwup-home/fwup/releases/tag/v1.15.0)
+    * [erlinit 1.15.1](https://github.com/nerves-project/erlinit/releases/tag/v1.15.1)
+    * [nerves_heart 2.5.0](https://github.com/nerves-project/nerves_heart/releases/tag/v2.5.0)
+    * [boardid 1.15.0](https://github.com/nerves-project/boardid/releases/tag/v1.15.0)
+
+## v1.32.0
+
+This is a major Erlang and Buildroot update. This updates from Erlang/OTP 27 to
+Erlang/OTP 28.
+
+* Changes
+  * Remove unneeded call to `rngd` and the `rng-tools` package. This was
+    formerly needed to provide entropy to Linux during initialization.
+
+* Package updates
+  * [nerves_system_br v1.32.3 release notes](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.32.3)
+
+* Updated dependencies
+  * [Erlang/OTP 28.1.1](https://erlang.org/download/OTP-28.1.1.README.md)
+  * [Buildroot 2025.05.2](https://lore.kernel.org/buildroot/7bed9b2e-a9d3-476b-84d6-61134e2f726f@rnout.be/T/)
+
+## v1.31.4
+
+* Changes
+  * Synchronize and fix Raspberry Pi camera settings
+
+## v1.31.3
+
+This is an important security/bug fix that addresses Erlang CVEs for the ssh
+module (see Erlang release notes).
+
+* Package updates
+  * [nerves_system_br v1.31.7](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.31.7). Also
+    see [nerves_system_br v1.31.6](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.31.6)
+
+* Important derived package updates
+  * [Erlang/OTP 27.3.4.3](https://erlang.org/download/OTP-27.3.4.3.README.md)
+  * [Buildroot 2025.02.6](https://lore.kernel.org/buildroot/b051d400-debc-4269-975a-b2992eed8d61@rnout.be/T/)
+
+## v1.31.2
+
+This is a security/bug fix release.
+
+* Package updates
+  * [nerves_system_br v1.31.5](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.31.5)
+
+* Important derived package updates
+  * [Erlang/OTP 27.3.4.2](https://erlang.org/download/OTP-27.3.4.2.README.md)
+  * [fwup 1.13.2](https://github.com/fwup-home/fwup/releases/tag/v1.13.2)
+
+## v1.31.1
+
+This is a security/bug fix release.
+
+* Changes
+  * Disabled `PREEMPT_RT` due to reports of instability on 32-bit Raspberry Pis.
+
+* Package updates
+  * [Erlang/OTP 27.3.4.1](https://erlang.org/download/OTP-27.3.4.1.README.md)
+  * [Buildroot 2025.02.3 (fixed 2025.02.2)](https://lore.kernel.org/buildroot/49d039c0-8121-4a91-8a69-889376f85c71@rnout.be/T/)
+  * Raspberry Pi WiFi firmware 1:20240709-2~bpo12+1+rpt3
+  * [rpi-libcamera v0.5.0+rpt20250429](https://github.com/raspberrypi/libcamera/releases/tag/v0.5.0%2Brpt20250429)
+  * rpicam-apps 1.7.0
+  * [erlinit 1.14.3](https://github.com/nerves-project/erlinit/releases/tag/v1.14.3)
+  * [fwup 1.13.0](https://github.com/fwup-home/fwup/releases/tag/v1.13.0)
 
 ## v1.31.0
 
